@@ -20,11 +20,15 @@ classifiers = [
 dependencies = [
     "aiohttp>=3.12.9",
     "prometheus-client>=0.21.0",
+    "mashumaro>=3.13.1",
 ]
 
 [project.optional-dependencies]
 dev = [
     "ruff==0.11.13",
+    "aiohttp==3.12.12",
+    "prometheus-client==0.22.1",
+    "mashumaro==3.16",
 ]
 
 [project.urls]
@@ -40,8 +44,15 @@ include = [
     "/pythonkuma",
 ]
 
+[tool.hatch.envs.default]
+dependencies = [
+    "pythonkuma[dev]"
+]
+
 [tool.hatch.envs.hatch-static-analysis]
-dependencies = ["ruff==0.11.13"]
+dependencies = [
+    "ruff==0.11.13",
+]
 config-path = "ruff.toml"
 
 [tool.pytest.ini_options]
@@ -53,5 +64,6 @@ pythonpath = ["pythonkuma"]
 
 [tool.hatch.envs.hatch-test]
 extra-dependencies = [
-  "pytest-cov"
+    "pythonkuma[dev]",
+    "pytest-cov==6.1.1",
 ]
