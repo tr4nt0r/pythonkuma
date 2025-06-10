@@ -22,9 +22,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-    "aiodns>=3.0.0",
     "aiohttp>=3.8.1,<4.0",
-    "cchardet>=2.1.7",
     "prometheus-client>=0.14.1",
 ]
 
