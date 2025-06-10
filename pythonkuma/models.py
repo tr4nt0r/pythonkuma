@@ -2,11 +2,21 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from enum import StrEnum
+from dataclasses import dataclass, field
+from enum import IntEnum, StrEnum
 from typing import Any
 
+from mashumaro import DataClassDictMixin
 from prometheus_client.parser import text_string_to_metric_families as parser
+
+
+class MonitorStatus(IntEnum):
+    """Monitor states."""
+
+    DOWN = 0
+    UP = 1
+    PENDING = 2
+    MAINTENANCE = 3
 
 
 class MonitorType(StrEnum):
@@ -36,33 +46,24 @@ class MonitorType(StrEnum):
     TAILSCALE_PING = "tailscale-ping"
 
 
-class UptimeKumaBaseModel:
+@dataclass
+class UptimeKumaBaseModel(DataClassDictMixin):
     """UptimeKumaBaseModel."""
 
 
-@dataclass
+@dataclass(kw_only=True)
 class UptimeKumaMonitor(UptimeKumaBaseModel):
     """Monitor model for Uptime Kuma."""
 
-    monitor_cert_days_remaining: float = 0
-    monitor_cert_is_valid: float = 0
-    monitor_hostname: str = ""
-    monitor_name: str = ""
-    monitor_port: str = ""
-    monitor_response_time: float = 0
-    monitor_status: float = 0
+    monitor_cert_days_remaining: int
+    monitor_cert_is_valid: bool
+    monitor_hostname: str | None = field(metadata={"deserialize": lambda v: None if v == "null" else v})
+    monitor_name: str
+    monitor_port: str | None = field(metadata={"deserialize": lambda v: None if v == "null" else v})
+    monitor_response_time: int = 0
+    monitor_status: MonitorStatus
     monitor_type: MonitorType = MonitorType.HTTP
-    monitor_url: str = ""
-
-    @staticmethod
-    def from_dict(data: dict[str, Any]) -> UptimeKumaMonitor:
-        """Generate object from json."""
-        obj: dict[str, Any] = {}
-        for key, value in data.items():
-            if hasattr(UptimeKumaMonitor, key):
-                obj[key] = MonitorType(value) if key == "monitor_type" else value
-
-        return UptimeKumaMonitor(**obj)
+    monitor_url: str | None = field(metadata={"deserialize": lambda v: None if v == "null" else v})
 
 
 @dataclass
