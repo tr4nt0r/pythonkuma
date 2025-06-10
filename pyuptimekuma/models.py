@@ -2,13 +2,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from enum import Enum
+from enum import StrEnum
 from typing import Any
 
 from prometheus_client.parser import text_string_to_metric_families as parser
 
 
-class MonitorType(str, Enum):
+class MonitorType(StrEnum):
     """Monitors type."""
 
     HTTP = "http"
@@ -20,7 +20,19 @@ class MonitorType(str, Enum):
     STEAM = "steam"
     MQTT = "mqtt"
     SQL = "sqlserver"
-
+    JSON_QUERY = "json-query"
+    GROUP = "group"
+    DOCKER ="docker"
+    GRPC_KEYWORD = "grpc-keyword"
+    REAL_BROWSER = "real-browser"
+    GAMEDIG = "gamedig"
+    KAFKA_PRODUCER = "kafka-producer"
+    POSTGRES = "postgres"
+    MYSQL = "mysql"
+    MONGODB = "mongodb"
+    RADIUS = "radius"
+    REDIS = "redis"
+    TAILSCALE_PING = "tailscale-ping"
 
 class UptimeKumaBaseModel:
     """UptimeKumaBaseModel."""
@@ -46,10 +58,7 @@ class UptimeKumaMonitor(UptimeKumaBaseModel):
         obj: dict[str, Any] = {}
         for key, value in data.items():
             if hasattr(UptimeKumaMonitor, key):
-                obj[key] = value
-
-        if obj.get("type"):
-            obj["type"] = MonitorType(obj["type"])
+                obj[key] = MonitorType(value) if key == "monitor_type" else value
 
         return UptimeKumaMonitor(**obj)
 
