@@ -32,7 +32,6 @@ def api_request(api_path: str, method: str = "GET"):
                     url=url,
                     timeout=aiohttp.ClientTimeout(total=10),
                     auth=aiohttp.BasicAuth(client._username, client._password),
-                    verify_ssl=client._verify_ssl,
                 )
 
                 if request.status != 200:

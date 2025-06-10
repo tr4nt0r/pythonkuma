@@ -8,13 +8,12 @@ from .models import UptimeKumaApiResponse
 class UptimeKuma:
     """This class is used to get information from Uptime Kuma."""
 
-    def __init__(self, session: ClientSession, base_url: str, username: str, password: str, verify_ssl=True) -> None:
+    def __init__(self, session: ClientSession, base_url: str, username: str, password: str) -> None:
         """Initialize"""
         self.monitors = []
         self._base_url = base_url
         self._username = username
         self._password = password
-        self._verify_ssl = verify_ssl
         self._session: ClientSession = session
 
     @api_request("/metrics")
