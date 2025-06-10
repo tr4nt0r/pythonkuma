@@ -23,8 +23,8 @@ def api_request(api_path: str, method: str = "GET"):
         async def wrapper(*args, **kwargs):
             """Wrapper"""
             client: UptimeKuma = args[0]
-            url = f"{client._base_url}{api_path}"
-            LOGGER.debug("Requesting %s", url)
+            url = client._base_url / api_path
+            LOGGER.debug("Requesting %s", url.human_repr())
             try:
                 request = await client._session.request(
                     method=method,
