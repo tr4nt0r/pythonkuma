@@ -5,8 +5,7 @@ from typing import TYPE_CHECKING
 
 import aiohttp
 
-from pyuptimekuma import exceptions
-
+from . import exceptions
 from .const import LOGGER
 from .models import UptimeKumaApiResponse
 
