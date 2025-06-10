@@ -28,7 +28,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "black==22.3.0",
+    "black==25.1.0",
     "isort==5.10.1",
 ]
 
