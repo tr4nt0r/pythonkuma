@@ -1,4 +1,5 @@
 """Python API wrapper for Uptime Kuma."""
+
 from .exceptions import (
     UptimeKumaAuthenticationException,
     UptimeKumaConnectionException,

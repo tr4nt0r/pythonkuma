@@ -8,7 +8,7 @@ dynamic = ["version"]
 description = "Simple Python wrapper for Uptime Kuma"
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.8.0"
+requires-python = ">=3.12"
 authors = [
     { name = "Manfred Dennerlein Rodelo", email = "manfred@dennerlein.name" },
     { name = "Jayakorn Karikan", email = "jayakornk@gmail.com" },
@@ -40,32 +40,18 @@ include = [
     "/pythonkuma",
 ]
 
-[tool.ruff]
-target-version = "py312"
-line-length = 88
+[tool.hatch.envs.hatch-static-analysis]
+dependencies = ["ruff==0.11.13"]
+config-path = "ruff.toml"
 
-[tool.ruff.lint]
-preview = true
-ignore = ["TRY003", "N818"]
+[tool.pytest.ini_options]
+addopts = "--cov=pythonkuma/ --cov-report=term-missing"
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope="module"
+testpaths = ["tests"]
+pythonpath = ["pythonkuma"]
 
-
-[tool.ruff.lint.isort]
-force-sort-within-sections = true
-known-first-party = ["pythonkuma"]
-combine-as-imports = true
-split-on-trailing-comma = false
-
-[tool.ruff.lint.pydocstyle]
-convention = "numpy"
-
-[tool.ruff.format]
-preview = true
-quote-style = "double"
-indent-style = "space"
-
-[tool.ruff.lint.mccabe]
-max-complexity = 25
-
-[tool.ruff.lint.flake8-tidy-imports]
-ban-relative-imports = "parents"
-
+[tool.hatch.envs.hatch-test]
+extra-dependencies = [
+  "pytest-cov"
+]

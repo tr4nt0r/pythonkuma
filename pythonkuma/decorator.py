@@ -1,4 +1,5 @@
 """Decorator for Uptime Kuma"""
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
@@ -44,9 +45,7 @@ def api_request(api_path: str, method: str = "GET"):
                 ) from exception
 
             except TimeoutError:
-                raise exceptions.UptimeKumaConnectionException(
-                    f"Request timeout for '{url}'"
-                ) from None
+                raise exceptions.UptimeKumaConnectionException(f"Request timeout for '{url}'") from None
 
             except exceptions.UptimeKumaConnectionException as exception:
                 raise exceptions.UptimeKumaConnectionException(exception) from exception

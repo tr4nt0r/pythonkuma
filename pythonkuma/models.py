@@ -1,4 +1,5 @@
 """Uptime Kuma models"""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -87,11 +88,7 @@ class UptimeKumaApiResponse(UptimeKumaBaseModel):
             for sample in family.samples:
                 if sample.name.startswith("monitor"):
                     existed = next(
-                        (
-                            i
-                            for i, x in enumerate(monitors)
-                            if x["monitor_name"] == sample.labels["monitor_name"]
-                        ),
+                        (i for i, x in enumerate(monitors) if x["monitor_name"] == sample.labels["monitor_name"]),
                         None,
                     )
                     if existed is None:
@@ -99,8 +96,6 @@ class UptimeKumaApiResponse(UptimeKumaBaseModel):
                         monitors.append(temp)
                     else:
                         monitors[existed][sample.name] = sample.value
-        obj["data"] = [
-            UptimeKumaMonitor.from_dict(monitor) for monitor in monitors
-        ]
+        obj["data"] = [UptimeKumaMonitor.from_dict(monitor) for monitor in monitors]
 
         return UptimeKumaApiResponse(**obj)

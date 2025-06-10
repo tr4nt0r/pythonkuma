@@ -1,4 +1,5 @@
 """Uptime Kuma client."""
+
 from aiohttp import ClientSession
 
 from .decorator import api_request
