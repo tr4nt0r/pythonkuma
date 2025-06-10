@@ -1,0 +1,38 @@
+line-length = 120
+
+[format]
+docstring-code-format = true
+docstring-code-line-length = 80
+quote-style = "double"
+indent-style = "space"
+
+[lint]
+
+[lint.per-file-ignores]
+"**/scripts/*" = [
+  "INP001",
+  "T201",
+]
+"**/tests/**/*" = [
+  "PLC1901",
+  "PLR2004",
+  "PLR6301",
+  "S",
+  "TID252",
+]
+
+[lint.flake8-tidy-imports]
+ban-relative-imports = "parents"
+
+[lint.isort]
+known-first-party = ["pyuptimekuma"]
+force-sort-within-sections = true
+combine-as-imports = true
+split-on-trailing-comma = false
+
+[lint.flake8-pytest-style]
+fixture-parentheses = false
+mark-parentheses = false
+
+[lint.pydocstyle]
+convention = "numpy"
