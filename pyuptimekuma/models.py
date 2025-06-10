@@ -22,7 +22,7 @@ class MonitorType(StrEnum):
     SQL = "sqlserver"
     JSON_QUERY = "json-query"
     GROUP = "group"
-    DOCKER ="docker"
+    DOCKER = "docker"
     GRPC_KEYWORD = "grpc-keyword"
     REAL_BROWSER = "real-browser"
     GAMEDIG = "gamedig"
@@ -33,6 +33,7 @@ class MonitorType(StrEnum):
     RADIUS = "radius"
     REDIS = "redis"
     TAILSCALE_PING = "tailscale-ping"
+
 
 class UptimeKumaBaseModel:
     """UptimeKumaBaseModel."""
