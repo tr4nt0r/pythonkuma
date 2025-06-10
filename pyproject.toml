@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-regex-commit"]
 build-backend = "hatchling.build"
 
 [project]
@@ -10,14 +10,10 @@ readme = "README.md"
 license = "MIT"
 requires-python = ">=3.8.0"
 authors = [
+    { name = "Manfred Dennerlein Rodelo", email = "manfred@dennerlein.name" },
     { name = "Jayakorn Karikan", email = "jayakornk@gmail.com" },
 ]
-keywords = [
-    "pyuptimekuma",
-    "setuptools",
-]
 classifiers = [
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
 ]
@@ -33,9 +29,11 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/jayakornk/pyuptimekuma"
+Source = "https://github.com/tr4nt0r/python-uptimekuma"
 
 [tool.hatch.version]
+source = "regex_commit"
+commit_extra_args = ["-e"]
 path = "pyuptimekuma/__init__.py"
 
 [tool.hatch.build.targets.sdist]
