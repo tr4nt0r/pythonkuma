@@ -24,8 +24,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "black==22.3.0",
-    "isort==5.10.1",
+    "ruff==0.11.13",
 ]
 
 [project.urls]
@@ -40,4 +39,32 @@ path = "pyuptimekuma/__init__.py"
 include = [
     "/pyuptimekuma",
 ]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+
+[tool.ruff.lint]
+preview = true
+ignore = ["TRY003", "N818"]
+
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+known-first-party = ["pyuptimekuma"]
+combine-as-imports = true
+split-on-trailing-comma = false
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.format]
+preview = true
+quote-style = "double"
+indent-style = "space"
+
+[tool.ruff.lint.mccabe]
+max-complexity = 25
+
+
 

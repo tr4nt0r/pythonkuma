@@ -1,7 +1,6 @@
 """Decorator for Uptime Kuma"""
 from __future__ import annotations
 
-import asyncio
 from typing import TYPE_CHECKING
 
 import aiohttp
@@ -45,7 +44,7 @@ def api_request(api_path: str, method: str = "GET"):
                     f"Request exception for '{url}' with - {exception}"
                 ) from exception
 
-            except asyncio.TimeoutError:
+            except TimeoutError:
                 raise exceptions.UptimeKumaConnectionException(
                     f"Request timeout for '{url}'"
                 ) from None
@@ -63,7 +62,6 @@ def api_request(api_path: str, method: str = "GET"):
 
             LOGGER.debug("Requesting %s returned %s", url, result)
 
-            # print(result)
             response = UptimeKumaApiResponse.from_prometheus(
                 {"monitors": result, "_api_path": api_path, "_method": method}
             )
