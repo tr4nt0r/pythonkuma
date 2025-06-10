@@ -66,5 +66,6 @@ indent-style = "space"
 [tool.ruff.lint.mccabe]
 max-complexity = 25
 
-
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "parents"
 
