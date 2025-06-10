@@ -3,7 +3,7 @@ requires = ["hatchling", "hatch-regex-commit"]
 build-backend = "hatchling.build"
 
 [project]
-name = "pyuptimekuma"
+name = "pythonkuma"
 dynamic = ["version"]
 description = "Simple Python wrapper for Uptime Kuma"
 readme = "README.md"
@@ -28,16 +28,16 @@ dev = [
 ]
 
 [project.urls]
-Source = "https://github.com/tr4nt0r/python-uptimekuma"
+Source = "https://github.com/tr4nt0r/pythonkuma"
 
 [tool.hatch.version]
 source = "regex_commit"
 commit_extra_args = ["-e"]
-path = "pyuptimekuma/__init__.py"
+path = "pythonkuma/__init__.py"
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "/pyuptimekuma",
+    "/pythonkuma",
 ]
 
 [tool.ruff]
@@ -51,7 +51,7 @@ ignore = ["TRY003", "N818"]
 
 [tool.ruff.lint.isort]
 force-sort-within-sections = true
-known-first-party = ["pyuptimekuma"]
+known-first-party = ["pythonkuma"]
 combine-as-imports = true
 split-on-trailing-comma = false
 
