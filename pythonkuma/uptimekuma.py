@@ -27,7 +27,19 @@ class UptimeKuma:
         api_key: str | None = None,
         timeout: float | None = None,
     ) -> None:
-        """Initialize the Uptime Kuma client."""
+        """Initialize the Uptime Kuma client.
+
+        Parameters
+        ----------
+        session : ClientSession
+            An aiohttp ClientSession instance
+        base_url : URL or str
+            The base URL of the Uptime Kuma server
+        api_key : str or None, optional
+            API key for authentication (default is None).
+        timeout : float or None, optional
+            Request timeout in seconds (default is 10 seconds if not specified).
+        """
         self._base_url = base_url if isinstance(base_url, URL) else URL(base_url)
 
         self._auth = BasicAuth("", api_key) if api_key else None
@@ -36,7 +48,27 @@ class UptimeKuma:
         self._session = session
 
     async def metrics(self) -> dict[str, UptimeKumaMonitor]:
-        """Retrieve metrics from Uptime Kuma."""
+        """Retrieve metrics from Uptime Kuma.
+
+        Fetches and parses Prometheus-style metrics from the Uptime Kuma API endpoint,
+        extracting monitor-related metrics and returning them as a dictionary of
+        UptimeKumaMonitor objects keyed by monitor name.
+
+        Returns
+        -------
+        dict[str, UptimeKumaMonitor]
+            A dictionary mapping monitor names to their corresponding UptimeKumaMonitor
+            objects.
+
+        Raises
+        ------
+        UptimeKumaAuthenticationException
+            If authentication with the Uptime Kuma API fails.
+        UptimeKumaConnectionException
+            If there is a connection error, timeout, or other client error during the
+            request.
+        """
+        monitors: dict[str, dict[str, Any]] = {}
         url = self._base_url / "metrics"
 
         try:
@@ -56,10 +88,7 @@ class UptimeKuma:
         except ClientError as e:
             raise UptimeKumaConnectionException from e
         else:
-            parsed = text_string_to_metric_families(await request.text())
-
-            monitors: dict[str, dict[str, Any]] = {}
-            for metric in parsed:
+            for metric in text_string_to_metric_families(await request.text()):
                 if not metric.name.startswith("monitor"):
                     continue
                 for sample in metric.samples:
