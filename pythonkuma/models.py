@@ -29,7 +29,7 @@ class MonitorType(StrEnum):
     PUSH = "push"
     STEAM = "steam"
     MQTT = "mqtt"
-    SQL = "sqlserver"
+    SQLSERVER = "sqlserver"
     JSON_QUERY = "json-query"
     GROUP = "group"
     DOCKER = "docker"
