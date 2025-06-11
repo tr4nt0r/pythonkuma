@@ -16,17 +16,16 @@ import aiohttp
 
 from pythonkuma import UptimeKuma
 
-URL = ""
-USERNAME = ""
-PASSWORD = ""
+URL = "https://uptime.exampe.com"
+API_KEY = "api_key"
 
 
 async def main():
 
     async with aiohttp.ClientSession() as session:
-        uptime_kuma = UptimeKuma(session, URL, USERNAME, PASSWORD)
-        response = await uptime_kuma.async_get_monitors()
-        print(response.data)
+        uptime_kuma = UptimeKuma(session, URL, API_KEY)
+        response = await uptime_kuma.metrics()
+        print(response)
 
 
 asyncio.run(main())
