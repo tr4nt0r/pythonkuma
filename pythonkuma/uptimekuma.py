@@ -35,7 +35,7 @@ class UptimeKuma:
         self._timeout = ClientTimeout(total=timeout or 10)
         self._session = session
 
-    async def metrics(self) -> list[UptimeKumaMonitor]:
+    async def metrics(self) -> dict[str, UptimeKumaMonitor]:
         """Retrieve metrics from Uptime Kuma."""
         url = self._base_url / "metrics"
 
