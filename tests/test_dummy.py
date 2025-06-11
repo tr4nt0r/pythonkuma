@@ -1,2 +1,5 @@
-def test_dummy():
-    pass
+"""Dummy tests."""
+
+
+def test_dummy() -> None:
+    """Dummy test."""
