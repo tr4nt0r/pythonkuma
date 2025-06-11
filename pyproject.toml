@@ -29,10 +29,13 @@ dev = [
     "aiohttp==3.12.12",
     "prometheus-client==0.22.1",
     "mashumaro==3.16",
+    "mkdocs-material==9.6.9",
+    "mkdocstrings[python]==0.29.0",
 ]
 
 [project.urls]
 Source = "https://github.com/tr4nt0r/pythonkuma"
+Documentation = "https://tr4nt0r.github.io/pythonkuma"
 
 [tool.hatch.version]
 source = "regex_commit"
@@ -67,3 +70,7 @@ extra-dependencies = [
     "pythonkuma[dev]",
     "pytest-cov==6.1.1",
 ]
+
+[tool.hatch.envs.default.scripts]
+docs-serve = "mkdocs serve"
+docs-build = "mkdocs build"
