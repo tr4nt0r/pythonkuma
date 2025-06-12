@@ -49,7 +49,7 @@ class UptimeKuma:
 
         self.version = UptimeKumaVersion()
 
-    async def metrics(self) -> dict[str, UptimeKumaMonitor]:
+    async def metrics(self) -> dict[str | int, UptimeKumaMonitor]:
         """Retrieve metrics from Uptime Kuma.
 
         Fetches and parses Prometheus-style metrics from the Uptime Kuma API endpoint,
@@ -70,7 +70,7 @@ class UptimeKuma:
             If there is a connection error, timeout, or other client error during the
             request.
         """
-        monitors: dict[str, dict[str, Any]] = {}
+        monitors: dict[str | int, dict[str, Any]] = {}
         url = self._base_url / "metrics"
 
         try:
@@ -96,10 +96,13 @@ class UptimeKuma:
                 if not metric.name.startswith("monitor"):
                     continue
                 for sample in metric.samples:
-                    if not (monitor_name := sample.labels.get("monitor_name")):
-                        continue
+                    key = (
+                        int(monitor_id)
+                        if (monitor_id := sample.labels.get("monitor_id"))
+                        else sample.labels["monitor_name"]
+                    )
 
-                    monitors.setdefault(monitor_name, sample.labels).update(
+                    monitors.setdefault(key, sample.labels).update(
                         {sample.name: sample.value}
                     )
 
