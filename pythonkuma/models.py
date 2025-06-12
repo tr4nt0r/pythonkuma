@@ -61,8 +61,8 @@ class UptimeKumaMonitor(UptimeKumaBaseModel):
     """Monitor model for Uptime Kuma."""
 
     monitor_id: int | None = None
-    monitor_cert_days_remaining: int
-    monitor_cert_is_valid: bool
+    monitor_cert_days_remaining: int | None = None
+    monitor_cert_is_valid: bool | None = None
     monitor_hostname: str | None = field(
         metadata={"deserialize": lambda v: None if v == "null" else v}
     )
