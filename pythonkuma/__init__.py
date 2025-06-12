@@ -8,7 +8,7 @@ from .exceptions import (
 from .models import MonitorStatus, MonitorType, UptimeKumaMonitor, UptimeKumaVersion
 from .uptimekuma import UptimeKuma
 
-__version__ = "0.2.0rc0"
+__version__ = "0.2.0rc1"
 
 __all__ = [
     "MonitorStatus",
