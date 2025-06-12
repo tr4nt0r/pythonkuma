@@ -43,6 +43,9 @@ class MonitorType(StrEnum):
     RADIUS = "radius"
     REDIS = "redis"
     TAILSCALE_PING = "tailscale-ping"
+    SMTP = "smtp"
+    SNMP = "snmp"
+    RABBIT_MQ = "rabbitmq"
     UNKNOWN = "unknown"
 
     @classmethod
