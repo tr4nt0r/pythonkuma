@@ -8,7 +8,7 @@ indent-style = "space"
 
 [lint]
 select = ["ALL"]
-ignore = ["TRY003", "COM812", "N818"]
+ignore = ["TRY003", "COM812", "N818", "C901"]
 
 [lint.per-file-ignores]
 "**/scripts/*" = [
