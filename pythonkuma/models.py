@@ -75,3 +75,13 @@ class UptimeKumaMonitor(UptimeKumaBaseModel):
     monitor_url: str | None = field(
         metadata={"deserialize": lambda v: None if v == "null" else v}
     )
+
+
+@dataclass
+class UptimeKumaVersion(UptimeKumaBaseModel):
+    """Uptime Kuma version."""
+
+    version: str = ""
+    major: str = ""
+    minor: str = ""
+    patch: str = ""

@@ -5,7 +5,7 @@ from .exceptions import (
     UptimeKumaConnectionException,
     UptimeKumaException,
 )
-from .models import MonitorStatus, MonitorType, UptimeKumaMonitor
+from .models import MonitorStatus, MonitorType, UptimeKumaMonitor, UptimeKumaVersion
 from .uptimekuma import UptimeKuma
 
 __version__ = "0.1.0"
@@ -18,4 +18,5 @@ __all__ = [
     "UptimeKumaConnectionException",
     "UptimeKumaException",
     "UptimeKumaMonitor",
+    "UptimeKumaVersion",
 ]

@@ -14,7 +14,7 @@ from prometheus_client.parser import text_string_to_metric_families
 from yarl import URL
 
 from .exceptions import UptimeKumaAuthenticationException, UptimeKumaConnectionException
-from .models import UptimeKumaMonitor
+from .models import UptimeKumaMonitor, UptimeKumaVersion
 
 
 class UptimeKuma:
@@ -46,6 +46,8 @@ class UptimeKuma:
 
         self._timeout = ClientTimeout(total=timeout or 10)
         self._session = session
+
+        self.version = UptimeKumaVersion()
 
     async def metrics(self) -> dict[str, UptimeKumaMonitor]:
         """Retrieve metrics from Uptime Kuma.
@@ -89,6 +91,8 @@ class UptimeKuma:
             raise UptimeKumaConnectionException from e
         else:
             for metric in text_string_to_metric_families(await request.text()):
+                if metric.name == "app_version" and metric.samples:
+                    self.version = UptimeKumaVersion.from_dict(metric.samples[0].labels)
                 if not metric.name.startswith("monitor"):
                     continue
                 for sample in metric.samples:
