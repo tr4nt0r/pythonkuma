@@ -29,7 +29,7 @@ dev = [
     "aiohttp==3.12.12",
     "prometheus-client==0.22.1",
     "mashumaro==3.16",
-    "mkdocs-material==9.6.9",
+    "mkdocs-material==9.6.14",
     "mkdocstrings[python]==0.29.0",
 ]
 
