@@ -60,6 +60,7 @@ class UptimeKumaBaseModel(DataClassDictMixin):
 class UptimeKumaMonitor(UptimeKumaBaseModel):
     """Monitor model for Uptime Kuma."""
 
+    monitor_id: int | None = None
     monitor_cert_days_remaining: int
     monitor_cert_is_valid: bool
     monitor_hostname: str | None = field(
