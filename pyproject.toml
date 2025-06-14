@@ -23,16 +23,6 @@ dependencies = [
     "mashumaro>=3.13.1",
 ]
 
-[project.optional-dependencies]
-dev = [
-    "ruff==0.11.13",
-    "aiohttp==3.12.12",
-    "prometheus-client==0.22.1",
-    "mashumaro==3.16",
-    "mkdocs-material==9.6.14",
-    "mkdocstrings[python]==0.29.1",
-]
-
 [project.urls]
 Source = "https://github.com/tr4nt0r/pythonkuma"
 Documentation = "https://tr4nt0r.github.io/pythonkuma"
@@ -49,7 +39,12 @@ include = [
 
 [tool.hatch.envs.default]
 dependencies = [
-    "pythonkuma[dev]"
+    "ruff==0.11.13",
+    "aiohttp==3.12.12",
+    "prometheus-client==0.22.1",
+    "mashumaro==3.16",
+    "mkdocs-material==9.6.14",
+    "mkdocstrings[python]==0.29.1",
 ]
 
 [tool.hatch.envs.hatch-static-analysis]
@@ -67,7 +62,6 @@ pythonpath = ["pythonkuma"]
 
 [tool.hatch.envs.hatch-test]
 extra-dependencies = [
-    "pythonkuma[dev]",
     "pytest-cov==6.1.1",
 ]
 
