@@ -11,3 +11,7 @@ class UptimeKumaConnectionException(UptimeKumaException):
 
 class UptimeKumaAuthenticationException(UptimeKumaException):
     """Uptime Kuma authentication exception."""
+
+
+class UpdateException(Exception):
+    """Exception raised for errors fetching latest release from github."""
