@@ -46,6 +46,7 @@ class MonitorType(StrEnum):
     SMTP = "smtp"
     SNMP = "snmp"
     RABBIT_MQ = "rabbitmq"
+    MANUAL = "manual"
     UNKNOWN = "unknown"
 
     @classmethod
