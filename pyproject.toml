@@ -40,7 +40,7 @@ include = [
 [tool.hatch.envs.default]
 dependencies = [
     "ruff==0.12.2",
-    "aiohttp==3.12.13",
+    "aiohttp==3.12.14",
     "prometheus-client==0.22.1",
     "mashumaro==3.16",
     "mkdocs-material==9.6.15",
