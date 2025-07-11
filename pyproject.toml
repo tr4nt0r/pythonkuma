@@ -39,7 +39,7 @@ include = [
 
 [tool.hatch.envs.default]
 dependencies = [
-    "ruff==0.12.2",
+    "ruff==0.12.3",
     "aiohttp==3.12.14",
     "prometheus-client==0.22.1",
     "mashumaro==3.16",
@@ -49,7 +49,7 @@ dependencies = [
 
 [tool.hatch.envs.hatch-static-analysis]
 dependencies = [
-    "ruff==0.12.2",
+    "ruff==0.12.3",
 ]
 config-path = "ruff.toml"
 
