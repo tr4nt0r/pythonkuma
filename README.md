@@ -14,7 +14,7 @@ Simple Python wrapper for Uptime Kuma
 ## 📖 Documentation
 
 - **Full Documentation**: [https://tr4nt0r.github.io/pythonkuma](https://tr4nt0r.github.io/pythonkuma)
-- **Source Code**: [ttps://github.com/tr4nt0r/pythonkuma](ttps://github.com/tr4nt0r/pythonkuma)
+- **Source Code**: [https://github.com/tr4nt0r/pythonkuma](https://github.com/tr4nt0r/pythonkuma)
 
 ---
 
