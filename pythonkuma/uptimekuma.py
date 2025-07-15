@@ -79,7 +79,7 @@ class UptimeKuma:
             )
             request.raise_for_status()
         except ClientResponseError as e:
-            if e.status is HTTPStatus.UNAUTHORIZED:
+            if e.status == HTTPStatus.UNAUTHORIZED:
                 msg = "Authentication failed for %s"
                 raise UptimeKumaAuthenticationException(msg, str(url)) from e
             msg = "Request for %s failed with status code %s"
