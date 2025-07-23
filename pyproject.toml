@@ -44,7 +44,7 @@ dependencies = [
     "prometheus-client==0.22.1",
     "mashumaro==3.16",
     "mkdocs-material==9.6.15",
-    "mkdocstrings[python]==0.29.1",
+    "mkdocstrings[python]==0.30.0",
 ]
 
 [tool.hatch.envs.hatch-static-analysis]
