@@ -43,7 +43,7 @@ dependencies = [
     "aiohttp==3.12.14",
     "prometheus-client==0.22.1",
     "mashumaro==3.16",
-    "mkdocs-material==9.6.15",
+    "mkdocs-material==9.6.16",
     "mkdocstrings[python]==0.30.0",
 ]
 
