@@ -51,7 +51,7 @@ dependencies = [
 dependencies = [
     "ruff==0.14.0",
 ]
-config-path = "ruff.toml"
+config-path = "none"
 
 [tool.pytest.ini_options]
 addopts = "--cov=pythonkuma/ --cov-report=term-missing"
@@ -68,3 +68,46 @@ extra-dependencies = [
 [tool.hatch.envs.default.scripts]
 docs-serve = "mkdocs serve"
 docs-build = "mkdocs build"
+
+[tool.ruff]
+target-version = "py314"
+line-length = 88
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 80
+quote-style = "double"
+indent-style = "space"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["TRY003", "COM812", "N818", "C901"]
+
+[lint.per-file-ignores]
+"**/scripts/*" = [
+  "INP001",
+  "T201",
+]
+"**/tests/**/*" = [
+  "PLC1901",
+  "PLR2004",
+  "PLR6301",
+  "S",
+  "TID252",
+]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "parents"
+
+[tool.ruff.lint.isort]
+known-first-party = ["pyuptimekuma"]
+force-sort-within-sections = true
+combine-as-imports = true
+split-on-trailing-comma = false
+
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+mark-parentheses = false
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
