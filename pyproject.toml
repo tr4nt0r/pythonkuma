@@ -62,7 +62,7 @@ pythonpath = ["pythonkuma"]
 
 [tool.hatch.envs.hatch-test]
 extra-dependencies = [
-    "pytest-cov==6.3.0",
+    "pytest-cov==7.0.0",
 ]
 
 [tool.hatch.envs.default.scripts]
