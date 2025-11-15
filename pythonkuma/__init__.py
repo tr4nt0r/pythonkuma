@@ -10,7 +10,7 @@ from .models import MonitorStatus, MonitorType, UptimeKumaMonitor, UptimeKumaVer
 from .update import UpdateChecker
 from .uptimekuma import UptimeKuma
 
-__version__ = "0.3.1"
+__version__ = "0.3.2"
 
 __all__ = [
     "MonitorStatus",
