@@ -37,6 +37,7 @@ class UpdateChecker:
         url = BASE_URL / "releases/latest"
         try:
             async with self._session.get(url) as response:
+                response.raise_for_status()
                 data = await response.json()
                 return LatestRelease(
                     tag_name=data["tag_name"],
