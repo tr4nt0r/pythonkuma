@@ -48,6 +48,10 @@ class MonitorType(StrEnum):
     RABBIT_MQ = "rabbitmq"
     MANUAL = "manual"
     UNKNOWN = "unknown"
+    WEBSOCKET_UPGRADE = "websocket-upgrade"
+    SYSTEM_SERVICE = "system-service"
+    GLOBALPING = "globalping"
+    SIP_OPTIONS = "sip-options"
 
     @classmethod
     def _missing_(cls, _: object) -> Self:
