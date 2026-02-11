@@ -102,9 +102,13 @@ class UptimeKuma:
                         else sample.labels["monitor_name"]
                     )
 
-                    monitors.setdefault(key, sample.labels).update(
-                        {sample.name: sample.value}
+                    name = (
+                        f"{sample.name}_{window}"
+                        if (window := sample.labels.get("window"))
+                        else sample.name
                     )
+
+                    monitors.setdefault(key, sample.labels).update({name: sample.value})
 
             return {
                 key: UptimeKumaMonitor.from_dict(value)
