@@ -95,7 +95,7 @@ class UptimeKuma:
             raise UptimeKumaConnectionException from e
 
         try:
-            metrics = set(text_string_to_metric_families(await request.text()))
+            metrics = list(text_string_to_metric_families(await request.text()))
         except ValueError as e:
             raise UptimeKumaParseException from e
 
