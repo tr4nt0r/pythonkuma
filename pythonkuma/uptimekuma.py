@@ -13,7 +13,11 @@ from aiohttp import (
 from prometheus_client.parser import text_string_to_metric_families
 from yarl import URL
 
-from .exceptions import UptimeKumaAuthenticationException, UptimeKumaConnectionException
+from .exceptions import (
+    UptimeKumaAuthenticationException,
+    UptimeKumaConnectionException,
+    UptimeKumaParseException,
+)
 from .models import UptimeKumaMonitor, UptimeKumaVersion
 
 
@@ -89,28 +93,32 @@ class UptimeKuma:
             raise UptimeKumaConnectionException(msg, str(url)) from e
         except ClientError as e:
             raise UptimeKumaConnectionException from e
-        else:
-            for metric in text_string_to_metric_families(await request.text()):
-                if metric.name == "app_version" and metric.samples:
-                    self.version = UptimeKumaVersion.from_dict(metric.samples[0].labels)
-                if not metric.name.startswith("monitor"):
-                    continue
-                for sample in metric.samples:
-                    key = (
-                        int(monitor_id)
-                        if (monitor_id := sample.labels.get("monitor_id"))
-                        else sample.labels["monitor_name"]
-                    )
 
-                    name = (
-                        f"{sample.name}_{window}"
-                        if (window := sample.labels.get("window"))
-                        else sample.name
-                    )
+        try:
+            metrics = set(text_string_to_metric_families(await request.text()))
+        except ValueError as e:
+            raise UptimeKumaParseException from e
 
-                    monitors.setdefault(key, sample.labels).update({name: sample.value})
+        for metric in metrics:
+            if metric.name == "app_version" and metric.samples:
+                self.version = UptimeKumaVersion.from_dict(metric.samples[0].labels)
+            if not metric.name.startswith("monitor"):
+                continue
+            for sample in metric.samples:
+                key = (
+                    int(monitor_id)
+                    if (monitor_id := sample.labels.get("monitor_id"))
+                    else sample.labels["monitor_name"]
+                )
 
-            return {
-                key: UptimeKumaMonitor.from_dict(value)
-                for key, value in monitors.items()
-            }
+                name = (
+                    f"{sample.name}_{window}"
+                    if (window := sample.labels.get("window"))
+                    else sample.name
+                )
+
+                monitors.setdefault(key, sample.labels).update({name: sample.value})
+
+        return {
+            key: UptimeKumaMonitor.from_dict(value) for key, value in monitors.items()
+        }
