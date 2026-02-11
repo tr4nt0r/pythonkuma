@@ -84,6 +84,13 @@ class UptimeKumaMonitor(UptimeKumaBaseModel):
     monitor_url: str | None = field(
         metadata={"deserialize": lambda v: None if v == "null" else v}
     )
+    monitor_uptime_ratio_1d: float | None = None
+    monitor_uptime_ratio_30d: float | None = None
+    monitor_uptime_ratio_365d: float | None = None
+
+    monitor_response_time_seconds_1d: float | None = None
+    monitor_response_time_seconds_30d: float | None = None
+    monitor_response_time_seconds_365d: float | None = None
 
 
 @dataclass
