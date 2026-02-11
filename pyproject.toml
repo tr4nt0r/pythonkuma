@@ -37,6 +37,9 @@ include = [
     "/pythonkuma",
 ]
 
+[[tool.hatch.envs.hatch-test.matrix]]
+python = ["3.14", "3.13", "3.12"]
+
 [tool.hatch.envs.default]
 dependencies = [
     "ruff==0.15.1",
@@ -45,6 +48,10 @@ dependencies = [
     "mashumaro==3.20",
     "mkdocs-material==9.7.1",
     "mkdocstrings[python]==1.0.3",
+    "pytest-asyncio==1.3.0",
+    "pytest==9.0.2",
+    "pytest-cov==7.0.0",
+    "syrupy==5.1.0",
 ]
 
 [tool.hatch.envs.hatch-static-analysis]
@@ -63,6 +70,8 @@ pythonpath = ["pythonkuma"]
 [tool.hatch.envs.hatch-test]
 extra-dependencies = [
     "pytest-cov==7.0.0",
+    "pytest-asyncio==1.3.0",
+    "syrupy==5.1.0",
 ]
 
 [tool.hatch.envs.default.scripts]
@@ -82,6 +91,9 @@ indent-style = "space"
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = ["TRY003", "COM812", "N818", "C901"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "TC002", "TC003"]
 
 [lint.per-file-ignores]
 "**/scripts/*" = [
