@@ -92,6 +92,8 @@ class UptimeKumaMonitor(UptimeKumaBaseModel):
     monitor_response_time_seconds_30d: float | None = None
     monitor_response_time_seconds_365d: float | None = None
 
+    monitor_tags: list[str]
+
 
 @dataclass
 class UptimeKumaVersion(UptimeKumaBaseModel):

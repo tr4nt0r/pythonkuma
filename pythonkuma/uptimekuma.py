@@ -20,6 +20,16 @@ from .exceptions import (
 )
 from .models import UptimeKumaMonitor, UptimeKumaVersion
 
+COMMON_LABELS = (
+    "monitor_id",
+    "monitor_name",
+    "monitor_type",
+    "monitor_url",
+    "monitor_hostname",
+    "monitor_port",
+    "window",
+)
+
 
 class UptimeKuma:
     """Uptime Kuma client."""
@@ -111,13 +121,20 @@ class UptimeKuma:
                     else sample.labels["monitor_name"]
                 )
 
+                tags = [
+                    f"{k}:{v}" if v else k
+                    for k, v in sample.labels.items()
+                    if k not in COMMON_LABELS
+                ]
                 name = (
                     f"{sample.name}_{window}"
                     if (window := sample.labels.get("window"))
                     else sample.name
                 )
 
-                monitors.setdefault(key, sample.labels).update({name: sample.value})
+                monitors.setdefault(
+                    key, {**sample.labels, "monitor_tags": tags}
+                ).update({name: sample.value})
 
         return {
             key: UptimeKumaMonitor.from_dict(value) for key, value in monitors.items()
