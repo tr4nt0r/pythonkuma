@@ -26,6 +26,9 @@ monitor_uptime_ratio{Test="",Zuhause="",monitor_id="3",monitor_name="Jellyfin",m
 monitor_uptime_ratio{monitor_id="8",monitor_name="Nextcloud",monitor_type="json-query",monitor_url="https://cloud.example.com/ocs/v2.php/apps/serverinfo/api/v1/info?format=json",monitor_hostname="null",monitor_port="null",window="1d"} 1
 monitor_uptime_ratio{monitor_id="8",monitor_name="Nextcloud",monitor_type="json-query",monitor_url="https://cloud.example.com/ocs/v2.php/apps/serverinfo/api/v1/info?format=json",monitor_hostname="null",monitor_port="null",window="30d"} 0.9991115593334294
 monitor_uptime_ratio{monitor_id="8",monitor_name="Nextcloud",monitor_type="json-query",monitor_url="https://cloud.example.com/ocs/v2.php/apps/serverinfo/api/v1/info?format=json",monitor_hostname="null",monitor_port="null",window="365d"} 0.9994703389830508
+monitor_uptime_ratio{monitor_id="9",monitor_name="Proxy",monitor_type="laserping",monitor_url="https://",monitor_hostname="null",monitor_port="null",window="1d"} 0.6666666666666666
+monitor_uptime_ratio{monitor_id="9",monitor_name="Proxy",monitor_type="laserping",monitor_url="https://",monitor_hostname="null",monitor_port="null",window="30d"} 0.6666666666666666
+monitor_uptime_ratio{monitor_id="9",monitor_name="Proxy",monitor_type="laserping",monitor_url="https://",monitor_hostname="null",monitor_port="null",window="365d"} 0.6666666666666666
 
 # HELP monitor_response_time_seconds Average response time in seconds calculated over sliding window specified by the 'window' label
 # TYPE monitor_response_time_seconds gauge
@@ -41,6 +44,9 @@ monitor_response_time_seconds{Test="",Zuhause="",monitor_id="3",monitor_name="Je
 monitor_response_time_seconds{monitor_id="8",monitor_name="Nextcloud",monitor_type="json-query",monitor_url="https://cloud.example.com/ocs/v2.php/apps/serverinfo/api/v1/info?format=json",monitor_hostname="null",monitor_port="null",window="1d"} 0.16155477855477854
 monitor_response_time_seconds{monitor_id="8",monitor_name="Nextcloud",monitor_type="json-query",monitor_url="https://cloud.example.com/ocs/v2.php/apps/serverinfo/api/v1/info?format=json",monitor_hostname="null",monitor_port="null",window="30d"} 0.3391915450984161
 monitor_response_time_seconds{monitor_id="8",monitor_name="Nextcloud",monitor_type="json-query",monitor_url="https://cloud.example.com/ocs/v2.php/apps/serverinfo/api/v1/info?format=json",monitor_hostname="null",monitor_port="null",window="365d"} 0.34379255863250385
+monitor_response_time_seconds{monitor_id="9",monitor_name="Proxy",monitor_type="laserping",monitor_url="https://",monitor_hostname="null",monitor_port="null",window="1d"} 0.032
+monitor_response_time_seconds{monitor_id="9",monitor_name="Proxy",monitor_type="laserping",monitor_url="https://",monitor_hostname="null",monitor_port="null",window="30d"} 0.032
+monitor_response_time_seconds{monitor_id="9",monitor_name="Proxy",monitor_type="laserping",monitor_url="https://",monitor_hostname="null",monitor_port="null",window="365d"} 0.032
 
 # HELP monitor_response_time Monitor Response Time (ms)
 # TYPE monitor_response_time gauge
@@ -48,6 +54,7 @@ monitor_response_time{monitor_id="1",monitor_name="Home Assistant",monitor_type=
 monitor_response_time{monitor_id="2",monitor_name="FritzBox",monitor_type="http",monitor_url="https://home.example.com",monitor_hostname="null",monitor_port="null"} 2725
 monitor_response_time{Test="",Zuhause="",monitor_id="3",monitor_name="Jellyfin",monitor_type="keyword",monitor_url="https://home.example.com:8920/health",monitor_hostname="null",monitor_port="null"} 85
 monitor_response_time{monitor_id="8",monitor_name="Nextcloud",monitor_type="json-query",monitor_url="https://cloud.example.com/ocs/v2.php/apps/serverinfo/api/v1/info?format=json",monitor_hostname="null",monitor_port="null"} 150
+monitor_response_time{monitor_id="9",monitor_name="Proxy",monitor_type="laserping",monitor_url="https://",monitor_hostname="null",monitor_port="null"} 19
 
 # HELP monitor_status Monitor Status (1 = UP, 0= DOWN, 2= PENDING, 3= MAINTENANCE)
 # TYPE monitor_status gauge
@@ -55,6 +62,7 @@ monitor_status{monitor_id="1",monitor_name="Home Assistant",monitor_type="http",
 monitor_status{monitor_id="2",monitor_name="FritzBox",monitor_type="http",monitor_url="https://home.example.com",monitor_hostname="null",monitor_port="null"} 1
 monitor_status{Test="",Zuhause="",monitor_id="3",monitor_name="Jellyfin",monitor_type="keyword",monitor_url="https://home.example.com:8920/health",monitor_hostname="null",monitor_port="null"} 1
 monitor_status{monitor_id="8",monitor_name="Nextcloud",monitor_type="json-query",monitor_url="https://cloud.example.com/ocs/v2.php/apps/serverinfo/api/v1/info?format=json",monitor_hostname="null",monitor_port="null"} 1
+monitor_status{monitor_id="9",monitor_name="Proxy",monitor_type="laserping",monitor_url="https://",monitor_hostname="null",monitor_port="null"} 1
 
 # HELP app_version The service version by package.json
 # TYPE app_version gauge

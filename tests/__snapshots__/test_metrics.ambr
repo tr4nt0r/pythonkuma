@@ -13,6 +13,8 @@
       'monitor_response_time_seconds_30d': 0.10284582478851578,
       'monitor_response_time_seconds_365d': 0.10957428212662089,
       'monitor_status': 1,
+      'monitor_tags': list([
+      ]),
       'monitor_type': 'http',
       'monitor_uptime_ratio_1d': 1.0,
       'monitor_uptime_ratio_30d': 0.999247554552295,
@@ -31,6 +33,8 @@
       'monitor_response_time_seconds_30d': 2.3636583723629956,
       'monitor_response_time_seconds_365d': 2.3783335690116663,
       'monitor_status': 1,
+      'monitor_tags': list([
+      ]),
       'monitor_type': 'http',
       'monitor_uptime_ratio_1d': 0.9992213859330392,
       'monitor_uptime_ratio_30d': 0.9998319004850872,
@@ -49,6 +53,10 @@
       'monitor_response_time_seconds_30d': 0.09908259629443207,
       'monitor_response_time_seconds_365d': 0.10429958790526786,
       'monitor_status': 1,
+      'monitor_tags': list([
+        'Test',
+        'Zuhause',
+      ]),
       'monitor_type': 'keyword',
       'monitor_uptime_ratio_1d': 1.0,
       'monitor_uptime_ratio_30d': 0.9993293252532994,
@@ -67,11 +75,33 @@
       'monitor_response_time_seconds_30d': 0.3391915450984161,
       'monitor_response_time_seconds_365d': 0.34379255863250385,
       'monitor_status': 1,
+      'monitor_tags': list([
+      ]),
       'monitor_type': 'json-query',
       'monitor_uptime_ratio_1d': 1.0,
       'monitor_uptime_ratio_30d': 0.9991115593334294,
       'monitor_uptime_ratio_365d': 0.9994703389830508,
       'monitor_url': 'https://cloud.example.com/ocs/v2.php/apps/serverinfo/api/v1/info?format=json',
+    }),
+    9: dict({
+      'monitor_cert_days_remaining': None,
+      'monitor_cert_is_valid': None,
+      'monitor_hostname': None,
+      'monitor_id': 9,
+      'monitor_name': 'Proxy',
+      'monitor_port': None,
+      'monitor_response_time': 19,
+      'monitor_response_time_seconds_1d': 0.032,
+      'monitor_response_time_seconds_30d': 0.032,
+      'monitor_response_time_seconds_365d': 0.032,
+      'monitor_status': 1,
+      'monitor_tags': list([
+      ]),
+      'monitor_type': 'unknown',
+      'monitor_uptime_ratio_1d': 0.6666666666666666,
+      'monitor_uptime_ratio_30d': 0.6666666666666666,
+      'monitor_uptime_ratio_365d': 0.6666666666666666,
+      'monitor_url': 'https://',
     }),
   })
 # ---
