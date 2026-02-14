@@ -6,7 +6,6 @@ Simple Python wrapper for Uptime Kuma
 [![codecov](https://codecov.io/gh/tr4nt0r/pythonkuma/graph/badge.svg?token=RM3MC4LP07)](https://codecov.io/gh/pythonkuma/pynecil)
 [![PyPI version](https://badge.fury.io/py/pythonkuma.svg)](https://badge.fury.io/py/pythonkuma)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/pythonkuma?style=flat&label=pypi%20downloads)
-[!["Buy Me A Coffee"](https://img.shields.io/badge/-buy_me_a%C2%A0coffee-gray?logo=buy-me-a-coffee)](https://www.buymeacoffee.com/tr4nt0r)
 [![GitHub Sponsor](https://img.shields.io/badge/GitHub-Sponsor-blue?logo=github)](https://github.com/sponsors/tr4nt0r)
 
 ---
