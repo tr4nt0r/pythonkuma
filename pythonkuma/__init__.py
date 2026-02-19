@@ -5,6 +5,7 @@ from .exceptions import (
     UptimeKumaAuthenticationException,
     UptimeKumaConnectionException,
     UptimeKumaException,
+    UptimeKumaParseException,
 )
 from .models import MonitorStatus, MonitorType, UptimeKumaMonitor, UptimeKumaVersion
 from .update import UpdateChecker
@@ -22,5 +23,6 @@ __all__ = [
     "UptimeKumaConnectionException",
     "UptimeKumaException",
     "UptimeKumaMonitor",
+    "UptimeKumaParseException",
     "UptimeKumaVersion",
 ]
