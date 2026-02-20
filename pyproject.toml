@@ -42,7 +42,7 @@ python = ["3.14", "3.13", "3.12"]
 
 [tool.hatch.envs.default]
 dependencies = [
-    "ruff==0.15.1",
+    "ruff==0.15.2",
     "aiohttp==3.13.3",
     "prometheus-client==0.24.1",
     "mashumaro==3.20",
@@ -56,7 +56,7 @@ dependencies = [
 
 [tool.hatch.envs.hatch-static-analysis]
 dependencies = [
-    "ruff==0.15.1",
+    "ruff==0.15.2",
 ]
 config-path = "none"
 
