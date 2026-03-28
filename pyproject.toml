@@ -43,7 +43,7 @@ python = ["3.14", "3.13", "3.12"]
 [tool.hatch.envs.default]
 dependencies = [
     "ruff==0.15.8",
-    "aiohttp==3.13.3",
+    "aiohttp==3.13.4",
     "prometheus-client==0.24.1",
     "mashumaro==3.20",
     "mkdocs-material==9.7.6",
