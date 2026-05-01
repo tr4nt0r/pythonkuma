@@ -21,37 +21,45 @@ class MonitorStatus(IntEnum):
 class MonitorType(StrEnum):
     """Monitors type."""
 
+    # General monitor type
     HTTP = "http"
+    KEYWORD = "keyword"
     PORT = "port"
     PING = "ping"
-    KEYWORD = "keyword"
     DNS = "dns"
-    PUSH = "push"
-    STEAM = "steam"
-    MQTT = "mqtt"
-    SQLSERVER = "sqlserver"
-    JSON_QUERY = "json-query"
-    GROUP = "group"
     DOCKER = "docker"
-    GRPC_KEYWORD = "grpc-keyword"
+    SYSTEM_SERVICE = "system-service"
     REAL_BROWSER = "real-browser"
-    GAMEDIG = "gamedig"
+    # Special
+    GROUP = "group"
+    # Passive monitor type
+    PUSH = "push"
+    MANUAL = "manual"
+    # Specific monitor type
+    GLOBALPING = "globalping"
+    GRPC_KEYWORD = "grpc-keyword"
+    JSON_QUERY = "json-query"
     KAFKA_PRODUCER = "kafka-producer"
-    POSTGRES = "postgres"
-    MYSQL = "mysql"
-    MONGODB = "mongodb"
-    RADIUS = "radius"
-    REDIS = "redis"
-    TAILSCALE_PING = "tailscale-ping"
+    MQTT = "mqtt"
+    RABBIT_MQ = "rabbitmq"
+    SIP_OPTIONS = "sip-options"
     SMTP = "smtp"
     SNMP = "snmp"
-    RABBIT_MQ = "rabbitmq"
-    MANUAL = "manual"
-    UNKNOWN = "unknown"
+    TAILSCALE_PING = "tailscale-ping"
     WEBSOCKET_UPGRADE = "websocket-upgrade"
-    SYSTEM_SERVICE = "system-service"
-    GLOBALPING = "globalping"
-    SIP_OPTIONS = "sip-options"
+    # Database monitor type
+    SQLSERVER = "sqlserver"
+    MONGODB = "mongodb"
+    MYSQL = "mysql"
+    ORACLEDB = "oracledb"
+    POSTGRES = "postgres"
+    REDIS = "redis"
+    RADIUS = "radius"
+    # Game server
+    GAMEDIG = "gamedig"
+    STEAM = "steam"
+    # other
+    UNKNOWN = "unknown"
 
     @classmethod
     def _missing_(cls, _: object) -> Self:
