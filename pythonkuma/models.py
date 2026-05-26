@@ -87,7 +87,7 @@ class UptimeKumaMonitor(UptimeKumaBaseModel):
         metadata={"deserialize": lambda v: None if v == "null" else v}
     )
     monitor_response_time: int = 0
-    monitor_status: MonitorStatus
+    monitor_status: MonitorStatus | None = None
     monitor_type: MonitorType = MonitorType.HTTP
     monitor_url: str | None = field(
         metadata={"deserialize": lambda v: None if v == "null" else v}

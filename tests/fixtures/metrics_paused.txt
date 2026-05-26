@@ -1,0 +1,37 @@
+# HELP monitor_cert_days_remaining The number of days remaining until the certificate expires
+# TYPE monitor_cert_days_remaining gauge
+monitor_cert_days_remaining{monitor_id="1",monitor_name="Home Assistant",monitor_type="http",monitor_url="https://home.example.com:8123",monitor_hostname="null",monitor_port="null"} 80
+
+# HELP monitor_cert_is_valid Is the certificate still valid? (1 = Yes, 0= No)
+# TYPE monitor_cert_is_valid gauge
+monitor_cert_is_valid{monitor_id="1",monitor_name="Home Assistant",monitor_type="http",monitor_url="https://home.example.com:8123",monitor_hostname="null",monitor_port="null"} 1
+
+# HELP monitor_uptime_ratio Uptime ratio calculated over sliding window specified by the 'window' label. (0.0 - 1.0)
+# TYPE monitor_uptime_ratio gauge
+monitor_uptime_ratio{monitor_id="1",monitor_name="Home Assistant",monitor_type="http",monitor_url="https://home.example.com:8123",monitor_hostname="null",monitor_port="null",window="1d"} 1
+monitor_uptime_ratio{monitor_id="1",monitor_name="Home Assistant",monitor_type="http",monitor_url="https://home.example.com:8123",monitor_hostname="null",monitor_port="null",window="30d"} 0.999247554552295
+monitor_uptime_ratio{monitor_id="1",monitor_name="Home Assistant",monitor_type="http",monitor_url="https://home.example.com:8123",monitor_hostname="null",monitor_port="null",window="365d"} 0.9944324016912971
+monitor_uptime_ratio{monitor_id="10",monitor_name="Paused Service",monitor_type="http",monitor_url="https://paused.example.com",monitor_hostname="null",monitor_port="null",window="1d"} 0.95
+monitor_uptime_ratio{monitor_id="10",monitor_name="Paused Service",monitor_type="http",monitor_url="https://paused.example.com",monitor_hostname="null",monitor_port="null",window="30d"} 0.97
+monitor_uptime_ratio{monitor_id="10",monitor_name="Paused Service",monitor_type="http",monitor_url="https://paused.example.com",monitor_hostname="null",monitor_port="null",window="365d"} 0.98
+
+# HELP monitor_response_time_seconds Average response time in seconds calculated over sliding window specified by the 'window' label
+# TYPE monitor_response_time_seconds gauge
+monitor_response_time_seconds{monitor_id="1",monitor_name="Home Assistant",monitor_type="http",monitor_url="https://home.example.com:8123",monitor_hostname="null",monitor_port="null",window="1d"} 0.10396079958463136
+monitor_response_time_seconds{monitor_id="1",monitor_name="Home Assistant",monitor_type="http",monitor_url="https://home.example.com:8123",monitor_hostname="null",monitor_port="null",window="30d"} 0.10284582478851578
+monitor_response_time_seconds{monitor_id="1",monitor_name="Home Assistant",monitor_type="http",monitor_url="https://home.example.com:8123",monitor_hostname="null",monitor_port="null",window="365d"} 0.10957428212662089
+monitor_response_time_seconds{monitor_id="10",monitor_name="Paused Service",monitor_type="http",monitor_url="https://paused.example.com",monitor_hostname="null",monitor_port="null",window="1d"} 0.42
+monitor_response_time_seconds{monitor_id="10",monitor_name="Paused Service",monitor_type="http",monitor_url="https://paused.example.com",monitor_hostname="null",monitor_port="null",window="30d"} 0.45
+monitor_response_time_seconds{monitor_id="10",monitor_name="Paused Service",monitor_type="http",monitor_url="https://paused.example.com",monitor_hostname="null",monitor_port="null",window="365d"} 0.5
+
+# HELP monitor_response_time Monitor Response Time (ms)
+# TYPE monitor_response_time gauge
+monitor_response_time{monitor_id="1",monitor_name="Home Assistant",monitor_type="http",monitor_url="https://home.example.com:8123",monitor_hostname="null",monitor_port="null"} 85
+
+# HELP monitor_status Monitor Status (1 = UP, 0= DOWN, 2= PENDING, 3= MAINTENANCE)
+# TYPE monitor_status gauge
+monitor_status{monitor_id="1",monitor_name="Home Assistant",monitor_type="http",monitor_url="https://home.example.com:8123",monitor_hostname="null",monitor_port="null"} 1
+
+# HELP app_version The service version by package.json
+# TYPE app_version gauge
+app_version{version="2.1.0",major="2",minor="1",patch="0"} 1
