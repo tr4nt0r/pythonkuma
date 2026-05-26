@@ -45,7 +45,7 @@ dependencies = [
     "ruff==0.15.14",
     "aiohttp==3.13.5",
     "prometheus-client==0.25.0",
-    "mashumaro==3.21",
+    "mashumaro==3.22",
     "mkdocs-material==9.7.6",
     "mkdocstrings[python]==1.0.4",
     "pytest-asyncio==1.4.0",
