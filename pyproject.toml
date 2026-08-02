@@ -91,7 +91,7 @@ indent-style = "space"
 
 [tool.ruff.lint]
 select = ["ALL"]
-ignore = ["TRY003", "COM812", "N818", "C901"]
+ignore = ["TRY003", "COM812", "N818", "C901", "CPY001"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["S101", "TC002", "TC003"]
