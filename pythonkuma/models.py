@@ -29,6 +29,7 @@ class MonitorType(StrEnum):
     DNS = "dns"
     DOCKER = "docker"
     SYSTEM_SERVICE = "system-service"
+    PM2 = "pm2"
     REAL_BROWSER = "real-browser"
     # Special
     GROUP = "group"
@@ -41,6 +42,7 @@ class MonitorType(StrEnum):
     JSON_QUERY = "json-query"
     KAFKA_PRODUCER = "kafka-producer"
     MQTT = "mqtt"
+    NTP = "ntp"
     RABBIT_MQ = "rabbitmq"
     SIP_OPTIONS = "sip-options"
     SMTP = "smtp"
