@@ -42,7 +42,7 @@ python = ["3.14", "3.13", "3.12"]
 
 [tool.hatch.envs.default]
 dependencies = [
-    "ruff==0.15.22",
+    "ruff==0.16.1",
     "aiohttp==3.14.3",
     "prometheus-client==0.26.0",
     "mashumaro==3.22",
@@ -56,7 +56,7 @@ dependencies = [
 
 [tool.hatch.envs.hatch-static-analysis]
 dependencies = [
-    "ruff==0.15.22",
+    "ruff==0.16.1",
 ]
 config-path = "none"
 
@@ -91,7 +91,7 @@ indent-style = "space"
 
 [tool.ruff.lint]
 select = ["ALL"]
-ignore = ["TRY003", "COM812", "N818", "C901"]
+ignore = ["TRY003", "COM812", "N818", "C901", "CPY001"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["S101", "TC002", "TC003"]
