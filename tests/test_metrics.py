@@ -62,7 +62,7 @@ async def test_metrics(mock_session: AsyncMock, snapshot: SnapshotAssertion) -> 
 async def test_exceptions(
     mock_session: AsyncMock,
     exception: Exception,
-    expected_exception: Exception,
+    expected_exception: type[Exception],
     error_msg: tuple[Any],
 ) -> None:
     """Test request exceptions."""

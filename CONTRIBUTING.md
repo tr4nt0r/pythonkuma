@@ -90,6 +90,7 @@ Execute the following command to apply linting and check typing:
 ```bash
 hatch code check
 hatch code fmt
+hatch check types
 ```
 
 ### Publish a new version

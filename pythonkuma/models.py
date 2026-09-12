@@ -65,7 +65,7 @@ class MonitorType(StrEnum):
     UNKNOWN = "unknown"
 
     @classmethod
-    def _missing_(cls, _: object) -> Self:
+    def _missing_(cls, value: object) -> Self:  # noqa: ARG003
         """Handle new and unknown monitor types."""
         return cls.UNKNOWN
 

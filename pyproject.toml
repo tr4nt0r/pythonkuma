@@ -63,6 +63,14 @@ dependencies = ["ruff==0.16.7"]
 config-path = "none"
 dependencies = ["ruff==0.16.7"]
 
+[tool.hatch.envs.hatch-check-types]
+template = "hatch-test"
+dependencies = [
+    "pyrefly==1.3.0",
+    "syrupy==6.0.0",
+]
+
+
 [tool.pytest.ini_options]
 addopts = "--cov=pythonkuma/ --cov-report=term-missing"
 asyncio_mode = "auto"
@@ -127,3 +135,9 @@ mark-parentheses = false
 
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
+
+[tool.pyrefly]
+project-includes = [
+    "**/*.py*",
+    "**/*.ipynb",
+]
