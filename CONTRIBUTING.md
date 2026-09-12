@@ -130,5 +130,5 @@ Before you submit a pull request, check that it meets these guidelines:
 You can serve the Mkdocs documentation with:
 
 ```bash
-hatch run docs-serve
+hatch run docs:serve
 ```
