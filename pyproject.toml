@@ -10,8 +10,7 @@ readme = "README.md"
 license = "MIT"
 requires-python = ">=3.12"
 authors = [
-    { name = "Manfred Dennerlein Rodelo", email = "manfred@dennerlein.name" },
-    { name = "Jayakorn Karikan", email = "jayakornk@gmail.com" },
+    { name = "Manfred Dennerlein Rodelo", email = "tr4nt0r@uber.space" },
 ]
 classifiers = [
     "Operating System :: OS Independent",
