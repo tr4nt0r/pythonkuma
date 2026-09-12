@@ -55,11 +55,13 @@ dependencies = [
     "syrupy==6.0.0",
 ]
 
-[tool.hatch.envs.hatch-static-analysis]
-dependencies = [
-    "ruff==0.16.7",
-]
+[tool.hatch.envs.hatch-check-code]
 config-path = "none"
+dependencies = ["ruff==0.16.7"]
+
+[tool.hatch.envs.hatch-check-fmt]
+config-path = "none"
+dependencies = ["ruff==0.16.7"]
 
 [tool.pytest.ini_options]
 addopts = "--cov=pythonkuma/ --cov-report=term-missing"
