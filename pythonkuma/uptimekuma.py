@@ -4,11 +4,11 @@ from http import HTTPStatus
 from typing import Any
 
 from aiohttp import (
-    BasicAuth,
     ClientError,
     ClientResponseError,
     ClientSession,
     ClientTimeout,
+    encode_basic_auth,
 )
 from prometheus_client.parser import text_string_to_metric_families
 from yarl import URL
@@ -56,7 +56,9 @@ class UptimeKuma:
         """
         self._base_url = base_url if isinstance(base_url, URL) else URL(base_url)
 
-        self._auth = BasicAuth("", api_key) if api_key else None
+        self._headers = (
+            {"Authorization": encode_basic_auth("", api_key)} if api_key else None
+        )
 
         self._timeout = ClientTimeout(total=timeout or 10)
         self._session = session
@@ -89,7 +91,7 @@ class UptimeKuma:
 
         try:
             request = await self._session.get(
-                url, auth=self._auth, timeout=self._timeout
+                url, headers=self._headers, timeout=self._timeout
             )
             request.raise_for_status()
         except ClientResponseError as e:
