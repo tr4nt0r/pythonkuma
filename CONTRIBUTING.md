@@ -13,10 +13,10 @@ Report bugs at <https://github.com/tr4nt0r/pythonkuma/issues>.
 
 If you are reporting a bug, please include:
 
--   Your operating system name and version.
--   Any details about your local setup that might be helpful in
+- Your operating system name and version.
+- Any details about your local setup that might be helpful in
     troubleshooting.
--   Detailed steps to reproduce the bug.
+- Detailed steps to reproduce the bug.
 
 ### Fix Bugs
 
@@ -42,10 +42,10 @@ The best way to send feedback is to file an issue at
 
 If you are proposing a feature:
 
--   Explain in detail how it would work.
--   Keep the scope as narrow as possible, to make it easier to
+- Explain in detail how it would work.
+- Keep the scope as narrow as possible, to make it easier to
     implement.
--   Remember that this is a volunteer-driven project, and that
+- Remember that this is a volunteer-driven project, and that
     contributions are welcome :)
 
 ## Development
@@ -57,22 +57,19 @@ local development.
 
 [Fork](https://github.com/tr4nt0r/pythonkuma/fork) the `pythonkuma` repo on GitHub.
 
-
-
 Clone your fork locally:
 
 ```bash
-$ git clone git@github.com:yourusername/pythonkuma.git
+git clone git@github.com:yourusername/pythonkuma.git
 ```
 
 Create a branch for local development:
 
 ``` bash
-$ git checkout -b name-of-your-bugfix-or-feature
+git checkout -b name-of-your-bugfix-or-feature
 ```
 
 Now you can make your changes locally.
-
 
 ### Setup environment
 
@@ -83,7 +80,7 @@ We use [Hatch](https://hatch.pypa.io/latest/install/) to manage the development 
 You can run all the tests with:
 
 ```bash
-hatch run test
+hatch test
 ```
 
 ### Format the code
@@ -91,7 +88,8 @@ hatch run test
 Execute the following command to apply linting and check typing:
 
 ```bash
-hatch run lint
+hatch code check
+hatch code fmt
 ```
 
 ### Publish a new version
@@ -114,19 +112,17 @@ Your default Git text editor will open so you can add information about the rele
 
 When you push the tag on GitHub, the workflow will automatically publish it on PyPi and a GitHub release will be created as draft.
 
-
 ## Pull Request Guidelines
 
 Before you submit a pull request, check that it meets these guidelines:
 
-1.  The pull request should include tests.
-2.  If the pull request adds functionality, the docs should be updated.
+1. The pull request should include tests.
+2. If the pull request adds functionality, the docs should be updated.
     Put your new functionality into a function with a docstring, and add
     the feature to the list in README.md.
-3.  The pull request should work for Python 3.12 and 3.13. Check
+3. The pull request should work for Python 3.12 and 3.13. Check
     <https://github.com/tr4nt0r/pythonkuma/actions/workflows/build.yaml>
     and make sure that the tests pass for all supported Python versions.
-
 
 ## Serve the documentation
 
