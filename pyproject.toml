@@ -52,6 +52,7 @@ dependencies = [
     "pytest==9.1.1",
     "pytest-cov==7.1.0",
     "syrupy==6.0.0",
+    "prek==0.5.2",
 ]
 
 [tool.hatch.envs.hatch-check-code]
