@@ -31,6 +31,7 @@ class MonitorType(StrEnum):
     SYSTEM_SERVICE = "system-service"
     PM2 = "pm2"
     REAL_BROWSER = "real-browser"
+    SFTP = "sftp"
     # Special
     GROUP = "group"
     # Passive monitor type
