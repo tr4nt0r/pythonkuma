@@ -42,7 +42,7 @@ python = ["3.14", "3.13", "3.12"]
 [tool.hatch.envs.default]
 python = "3.14"
 dependencies = [
-    "ruff==0.16.7",
+    "ruff==0.16.8",
     "aiohttp==3.14.3",
     "prometheus-client==0.26.0",
     "mashumaro==3.22",
@@ -55,11 +55,11 @@ dependencies = [
 
 [tool.hatch.envs.hatch-check-code]
 config-path = "none"
-dependencies = ["ruff==0.16.7"]
+dependencies = ["ruff==0.16.8"]
 
 [tool.hatch.envs.hatch-check-fmt]
 config-path = "none"
-dependencies = ["ruff==0.16.7"]
+dependencies = ["ruff==0.16.8"]
 
 [tool.hatch.envs.hatch-check-types]
 template = "hatch-test"
