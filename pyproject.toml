@@ -88,7 +88,7 @@ extra-args = ["--cov-report=xml", "-vv"]
 detached = true
 dependencies = [
     "mkdocs-material==9.7.7",
-    "mkdocstrings[python]==1.0.6",
+    "mkdocstrings[python]==1.0.7",
 ]
 
 [tool.hatch.envs.docs.scripts]
