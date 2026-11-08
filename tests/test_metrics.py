@@ -1,10 +1,14 @@
 """Tests for pythonkuma."""
 
+from collections.abc import Iterable
 from http import HTTPStatus
+import threading
 from typing import Any
-from unittest.mock import AsyncMock, Mock
+from unittest.mock import AsyncMock, Mock, patch
 
 from aiohttp import ClientError, ClientResponseError, ConnectionTimeoutError
+from prometheus_client.metrics_core import Metric
+from prometheus_client.parser import text_string_to_metric_families
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
@@ -82,3 +86,24 @@ async def test_metrics_parse_exceptions(mock_session: AsyncMock) -> None:
 
     with pytest.raises(UptimeKumaParseException):
         await uptime_kuma.metrics()
+
+
+async def test_metrics_parsed_off_event_loop(mock_session: AsyncMock) -> None:
+    """Test prometheus metrics are parsed in a worker thread, not the event loop."""
+    loop_thread = threading.get_ident()
+    parse_threads: list[int] = []
+
+    def recording_parser(text: str) -> Iterable[Metric]:
+        parse_threads.append(threading.get_ident())
+        return text_string_to_metric_families(text)
+
+    uptime_kuma = UptimeKuma(mock_session, "http://uptime.example.com", "test-apikey")
+
+    with patch(
+        "pythonkuma.uptimekuma.text_string_to_metric_families", recording_parser
+    ):
+        monitors = await uptime_kuma.metrics()
+
+    assert monitors
+    assert parse_threads
+    assert loop_thread not in parse_threads

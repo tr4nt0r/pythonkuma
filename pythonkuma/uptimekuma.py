@@ -1,5 +1,6 @@
 """Uptime Kuma client."""
 
+import asyncio
 from http import HTTPStatus
 from typing import Any
 
@@ -86,7 +87,6 @@ class UptimeKuma:
             If there is a connection error, timeout, or other client error during the
             request.
         """
-        monitors: dict[str | int, dict[str, Any]] = {}
         url = self._base_url / "metrics"
 
         try:
@@ -106,38 +106,70 @@ class UptimeKuma:
         except ClientError as e:
             raise UptimeKumaConnectionException from e
 
-        try:
-            metrics = list(text_string_to_metric_families(await request.text()))
-        except ValueError as e:
-            raise UptimeKumaParseException from e
+        text = await request.text()
 
-        for metric in metrics:
-            if metric.name == "app_version" and metric.samples:
-                self.version = UptimeKumaVersion.from_dict(metric.samples[0].labels)
-            if not metric.name.startswith("monitor"):
-                continue
-            for sample in metric.samples:
-                key = (
-                    int(monitor_id)
-                    if (monitor_id := sample.labels.get("monitor_id"))
-                    else sample.labels["monitor_name"]
-                )
+        # Parsing the Prometheus exposition format is CPU-bound and scales with
+        # the number of monitors, so run it in a worker thread to avoid blocking
+        # the event loop.
+        version, result = await asyncio.to_thread(_parse_metrics, text)
+        if version is not None:
+            self.version = version
 
-                tags = [
-                    f"{k}:{v}" if v else k
-                    for k, v in sample.labels.items()
-                    if k not in COMMON_LABELS
-                ]
-                name = (
-                    f"{sample.name}_{window}"
-                    if (window := sample.labels.get("window"))
-                    else sample.name
-                )
+        return result
 
-                monitors.setdefault(
-                    key, {**sample.labels, "monitor_tags": tags}
-                ).update({name: sample.value})
 
-        return {
-            key: UptimeKumaMonitor.from_dict(value) for key, value in monitors.items()
-        }
+def _parse_metrics(
+    text: str,
+) -> tuple[UptimeKumaVersion | None, dict[str | int, UptimeKumaMonitor]]:
+    """Parse Prometheus metrics text into monitors.
+
+    Runs synchronously; call it from a worker thread.
+
+    Returns
+    -------
+    tuple[UptimeKumaVersion | None, dict[str | int, UptimeKumaMonitor]]
+        The app version (if reported) and the monitors keyed by id or name.
+
+    Raises
+    ------
+    UptimeKumaParseException
+        If the metrics text cannot be parsed.
+    """
+    monitors: dict[str | int, dict[str, Any]] = {}
+    version: UptimeKumaVersion | None = None
+
+    try:
+        metrics = list(text_string_to_metric_families(text))
+    except ValueError as e:
+        raise UptimeKumaParseException from e
+
+    for metric in metrics:
+        if metric.name == "app_version" and metric.samples:
+            version = UptimeKumaVersion.from_dict(metric.samples[0].labels)
+        if not metric.name.startswith("monitor"):
+            continue
+        for sample in metric.samples:
+            key = (
+                int(monitor_id)
+                if (monitor_id := sample.labels.get("monitor_id"))
+                else sample.labels["monitor_name"]
+            )
+
+            tags = [
+                f"{k}:{v}" if v else k
+                for k, v in sample.labels.items()
+                if k not in COMMON_LABELS
+            ]
+            name = (
+                f"{sample.name}_{window}"
+                if (window := sample.labels.get("window"))
+                else sample.name
+            )
+
+            monitors.setdefault(key, {**sample.labels, "monitor_tags": tags}).update(
+                {name: sample.value}
+            )
+
+    return version, {
+        key: UptimeKumaMonitor.from_dict(value) for key, value in monitors.items()
+    }
