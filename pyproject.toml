@@ -64,7 +64,7 @@ dependencies = ["ruff==0.17.5"]
 [tool.hatch.envs.hatch-check-types]
 template = "hatch-test"
 dependencies = [
-    "pyrefly==1.4.1",
+    "pyrefly==1.5.0",
     "syrupy==7.0.2",
 ]
 
