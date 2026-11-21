@@ -49,7 +49,7 @@ dependencies = [
     "pytest-asyncio==1.5.0",
     "pytest==9.2.0",
     "pytest-cov==7.1.0",
-    "syrupy==7.0.2",
+    "syrupy==7.0.3",
     "prek==0.5.11",
 ]
 
@@ -65,7 +65,7 @@ dependencies = ["ruff==0.17.6"]
 template = "hatch-test"
 dependencies = [
     "pyrefly==1.5.0",
-    "syrupy==7.0.2",
+    "syrupy==7.0.3",
 ]
 
 
@@ -80,7 +80,7 @@ pythonpath = ["pythonkuma"]
 extra-dependencies = [
     "pytest-cov==7.1.0",
     "pytest-asyncio==1.5.0",
-    "syrupy==7.0.2",
+    "syrupy==7.0.3",
 ]
 extra-args = ["--cov-report=xml", "-vv"]
 
